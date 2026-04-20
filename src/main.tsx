@@ -15,10 +15,16 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .register('/sw.js', { scope: '/' })
       .then((registration) => {
-        console.log('[SW] Registered:', registration.scope)
+        // Only log in development — avoids leaking deployment details in production
+        if (import.meta.env.DEV) {
+          console.log('[SW] Registered:', registration.scope)
+        }
       })
-      .catch((error) => {
-        console.warn('[SW] Registration failed:', error)
+      .catch(() => {
+        // Generic message in production — no internal details exposed
+        if (import.meta.env.DEV) {
+          console.warn('[SW] Registration failed')
+        }
       })
   })
 }

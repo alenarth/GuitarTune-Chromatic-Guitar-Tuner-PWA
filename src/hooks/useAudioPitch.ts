@@ -114,13 +114,19 @@ export function useAudioPitch(): UseAudioPitchReturn {
 
       rafRef.current = requestAnimationFrame(loop);
     } catch (err) {
+      // Map known DOMException names to safe user-facing messages.
+      // Never expose err.message directly — it can leak internal details.
+      const SAFE_ERRORS: Record<string, string> = {
+        NotAllowedError: 'Microphone access denied. Please allow microphone access and try again.',
+        NotFoundError: 'No microphone found. Please connect a microphone and try again.',
+        NotReadableError: 'Microphone is in use by another application.',
+        SecurityError: 'Microphone access requires a secure connection (HTTPS).',
+        AbortError: 'Microphone request was cancelled.',
+        OverconstrainedError: 'Microphone does not support the required audio settings.',
+      };
       const msg =
         err instanceof DOMException
-          ? err.name === 'NotAllowedError'
-            ? 'Microphone access denied. Please allow microphone access and try again.'
-            : err.name === 'NotFoundError'
-            ? 'No microphone found. Please connect a microphone and try again.'
-            : `Audio error: ${err.message}`
+          ? (SAFE_ERRORS[err.name] ?? 'Could not access microphone.')
           : 'Could not access microphone.';
 
       setError(msg);
