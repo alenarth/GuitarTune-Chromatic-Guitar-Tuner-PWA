@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#0d0d0f"/>
+  <!-- Guitar body -->
+  <ellipse cx="224" cy="340" rx="120" ry="110" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" strokeWidth="18"/>
+  <ellipse cx="224" cy="340" rx="68" ry="56" fill="none" stroke="rgba(245,158,11,0.3)" strokeWidth="12"/>
+  <!-- Guitar neck -->
+  <rect x="238" y="60" width="48" height="200" rx="22" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" strokeWidth="18"/>
+  <!-- Tuning pegs -->
+  <circle cx="210" cy="72" r="22" fill="#f59e0b"/>
+  <circle cx="314" cy="72" r="22" fill="#f59e0b"/>
+  <!-- Sound hole -->
+  <circle cx="224" cy="340" r="38" fill="none" stroke="rgba(245,158,11,0.5)" strokeWidth="10"/>
+  <!-- Strings -->
+  <line x1="190" y1="270" x2="190" y2="450" stroke="rgba(245,158,11,0.5)" strokeWidth="6"/>
+  <line x1="220" y1="270" x2="220" y2="450" stroke="rgba(245,158,11,0.5)" strokeWidth="5"/>
+  <line x1="250" y1="270" x2="250" y2="450" stroke="rgba(245,158,11,0.5)" strokeWidth="4"/>
+  <!-- Amber accent glow -->
+  <circle cx="390" cy="160" r="40" fill="#f59e0b" opacity="0.8"/>
+  <circle cx="390" cy="160" r="22" fill="white" opacity="0.9"/>
+</svg>
